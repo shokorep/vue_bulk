@@ -1,0 +1,38 @@
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Hello, Vue.js</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id='app'>
+        <div>
+            <h1>Todo App</h1>
+            <form @submit.prevent>
+                <input type="text" v-model:value='todoItem'> <button @click='addList'>add</button>
+            </form>
+            {{ $data }}
+            <ul>
+                <li v-for='todo in todos' class='todoList'>
+                    <input type="checkbox" v-model='todo.isDone'> 
+                    <span :class='{ done : todo.isDone}'>{{ todo.item }}</span>
+                    <input type="submit" @click='deliteItem' value='delete'>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+        <p>{{ message }}</p>
+        <button @click="showSite">showSite!</button><button @click="onClick">click!</button>
+        <p v-if='toggle'><a :href='url' target="_blank">vue.js公式サイト</a></p>
+        <ul>
+            <li v-for='(language, key) in languages'>{{key}} is {{ language }}</li>
+        </ul>
+        <input type="text" v-model='message'>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.todoList {
+    list-style: none;
+}
+
+span.done {
+    text-decoration: line-through;
+}
