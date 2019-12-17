@@ -13,10 +13,10 @@
             </form>
             {{ $data }}
             <ul>
-                <li v-for='todo in todos' class='todoList'>
+                <li v-for='(todo,index) in todos' class='todoList'>
                     <input type="checkbox" v-model='todo.isDone'> 
                     <span :class='{ done : todo.isDone}'>{{ todo.item }}</span>
-                    <input type="submit" @click='deliteItem' value='delete'>
+                    <button @click.stop.prevent='deliteItem(index)'>delete</button>
                 </li>
             </ul>
         </div>

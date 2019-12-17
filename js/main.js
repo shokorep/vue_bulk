@@ -27,8 +27,9 @@ var app = new Vue({
                 this.todoItem = ''
             }
         },
-        deliteItem() {
-
+        deliteItem(index) {
+            // alert(index)
+            this.todos.splice(index, 1)
         }
     }
 })
