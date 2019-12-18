@@ -1,7 +1,25 @@
+#todoApp {
+    margin: 50px 100px;
+    padding: 10px 30px 30px;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+
 .todoList {
     list-style: none;
 }
 
 span.done {
     text-decoration: line-through;
+}
+
+#bitcoin {
+    margin: 50px 100px;
+    padding: 10px 30px 30px;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+
+[v-clock] {
+    display: none;
 }

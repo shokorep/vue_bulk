@@ -6,12 +6,12 @@
 </head>
 <body>
     <div id='app'>
-        <div>
+        <div id='todoApp'>
             <h1>Todo App</h1>
             <form @submit.prevent>
                 <input type="text" v-model:value='todoItem'> <button @click='addList'>add</button>
             </form>
-            {{ $data }}
+            <!-- {{ $data }} -->
             <ul>
                 <li v-for='(todo,index) in todos' class='todoList'>
                     <input type="checkbox" v-model='todo.isDone'> 
@@ -20,19 +20,48 @@
                 </li>
             </ul>
         </div>
+<hr>
 
+        <div id='bitcoin'>
+            <h1>Bitcoin Price</h1>
+            <section v-if='hasError'>通信エラー</section>
+            <section v-else>
+                <div v-if='isLoading'>Loading...</div>
+                <div v-else>
+                    <ul v-clock>
+                        <li v-for='(rate, currency) in bpi'>
+                            {{ currency }} :
+                             {{ rate.rate_float | currencyDecimal }}</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
 
-
-
-        <p>{{ message }}</p>
-        <button @click="showSite">showSite!</button><button @click="onClick">click!</button>
-        <p v-if='toggle'><a :href='url' target="_blank">vue.js公式サイト</a></p>
-        <ul>
-            <li v-for='(language, key) in languages'>{{key}} is {{ language }}</li>
-        </ul>
-        <input type="text" v-model='message'>
+<hr>
+        <div>
+            <p>{{ message }}</p>
+            <button @click="showSite">showSite!</button><button @click="onClick">click!</button>
+            <p v-once>{{ reverseMessage }}</p>
+            <p>{{ reverseMessage }}</p>
+            <button @click="onReverse">reverse</button>
+            <p v-if='toggle'><a :href='url' target="_blank">vue.js公式サイト</a></p>
+            <p v-html='colorRedMessage'></p>
+            <p v-text='message'></p>
+            <p>{{ message.split('').reverse().join('') }}</p>
+            <p>{{number + 1}}</p>
+            <p>{{ok ? 'yes' : 'no'}}</p>
+            <button @click='changeOk'>changeOk</button>
+            <ul>
+                <li v-for='(language, key) in languages'>{{key}} is {{ language }}</li>
+            </ul>
+            <input type="text" v-model='message'>
+            <hr>
+            <input type="text" :value='number | numberFormat'>
+            <p>{{number | numberFormat}}</p>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.18.0/dist/axios.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
