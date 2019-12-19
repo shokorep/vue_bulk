@@ -1,3 +1,7 @@
+// vue.fllter('toUSD', jpy=>{
+//     return jpy/100
+// })
+
 var app = new Vue({
     el:'#app',
     data: {
@@ -17,7 +21,9 @@ var app = new Vue({
         colorRedMessage: 'Hello,<span style="color:red;"> vue.js</span>',
 
         number: 1000000,
-        ok: false
+        ok: false,
+        text: 'In publishing and graphic design, lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used before final copy is available, but it may also be used to temporarily replace copy in a process called greeking, which allows designers to consider form without the meaning of the text influencing the design.',
+        basePrice: 100
     },
     mounted() {
         axios.get('https://api.coindesk.com/v1/bpi/currentprice.json').then(res =>{
@@ -37,6 +43,25 @@ var app = new Vue({
         },
         numberFormat(value) {
             return value.toLocaleString();
+        },
+        toUSD(jpy) {
+            return jpy/100
+        },
+        readMore(text, length, suffix) {
+            return text.substring(0, length) + suffix
+        }
+    },
+    computed: {
+        reverseText() {
+            return this.reverseMessage.split('').reverse().join('')
+        },
+        taxIncludedPrice: {
+            get: function() {
+                return parseInt(this.basePrice * 1.08)
+            },
+            set: (taxIncludedPrice) => {
+                this.basePrice = Math.ceil(taxIncludedPrice/108)
+            }
         }
     },
     methods: {

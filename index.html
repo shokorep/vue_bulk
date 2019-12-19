@@ -55,9 +55,15 @@
                 <li v-for='(language, key) in languages'>{{key}} is {{ language }}</li>
             </ul>
             <input type="text" v-model='message'>
-            <hr>
+            <hr>ß
             <input type="text" :value='number | numberFormat'>
             <p>{{number | numberFormat}}</p>
+            <p>{{number | toUSD | numberFormat}}</p>
+            <p>{{text | readMore(20, '...') }}</p>
+            <p>{{reverseText}}</p>
+            <p>base price: <input type="text" v-model='basePrice'></p>
+            <p>tax include price: <input type="text" v-model='taxIncludedPrice'></p>
+            {{basePrice}}
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16"></script>
